@@ -1,0 +1,7 @@
+{
+  "name": "oneirosverse",
+  "private": true,
+  "scripts": {
+    "start": "node server/index.js"
+  }
+}
