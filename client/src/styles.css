@@ -1,55 +1,148 @@
+/* --- ΧΡΩΜΑΤΑ ΚΑΙ ΒΑΣΙΚΕΣ ΡΥΘΜΙΣΕΙΣ --- */
 :root {
-  --bg-color: #0b1d26;
-  --accent-color: #fbd334;
-  --text-color: #ffffff;
+    --bg-dark: #0b1d26;
+    --accent: #fbd334;
+    --text-white: #ffffff;
+    --text-gray: rgba(255, 255, 255, 0.7);
 }
 
 body {
-  margin: 0;
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* --- 1. HERO SECTION --- */
 .hero {
-  height: 100vh;
-  background: linear-gradient(to bottom, rgba(11,29,38,0.2), #0b1d26),
-    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80');
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 15%;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(11, 29, 38, 0.2), var(--bg-dark)), 
+                url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin: 0;
+    max-width: 900px;
+    line-height: 1.1;
 }
 
-.input-panel {
-  padding: 80px 15%;
+.hero-tag {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.hero-tag::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent);
 }
 
-input, textarea {
-  padding: 12px;
+/* --- 2. ABOUT SECTION --- */
+.about-section {
+    padding: 80px 10%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: center;
+    background-color: #ffffff;
+    color: #1a1a1a;
 }
 
-.add-btn {
-  background: var(--accent-color);
-  border: none;
-  padding: 12px;
-  cursor: pointer;
+.about-image, .about-text {
+    flex: 1;
+    min-width: 300px;
 }
 
+.about-image img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 20px 20px 0px var(--bg-dark);
+}
+
+.about-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+}
+
+/* --- 3. PORTFOLIO CARDS --- */
 .content-block {
-  display: flex;
-  gap: 50px;
-  padding: 80px 15%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 100px 10%;
+    gap: 60px;
+}
+
+@media (min-width: 992px) {
+    .content-block:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+}
+
+.content-image {
+    flex: 1.2;
+    min-width: 320px;
+    position: relative;
+}
+
+.content-image img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    box-shadow: 15px 15px 0px var(--accent);
+}
+
+.number {
+    font-size: clamp(5rem, 15vw, 10rem);
+    font-weight: 700;
+    opacity: 0.1;
+    position: absolute;
+    top: -50px;
+    left: -30px;
+    z-index: 0;
+}
+
+.content-text {
+    flex: 1;
+    min-width: 320px;
+}
+
+.content-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+/* --- 4. MOBILE SETTINGS --- */
+@media (max-width: 768px) {
+    .hero { padding: 0 5%; }
+    .content-block { padding: 60px 5%; gap: 30px; }
+    .about-section { padding: 60px 5%; }
+    .number { top: -30px; left: 0; }
+}
+
+footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.8rem;
 }

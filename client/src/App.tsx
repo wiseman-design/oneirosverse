@@ -1,75 +1,79 @@
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import "./styles.css";
 
-export default function App() {
-  const [projects, setProjects] = useState<any[]>([]);
-  const [form, setForm] = useState({
-    title: "",
-    description: "",
-    image: ""
-  });
 
-  useEffect(() => {
-    fetch("http://localhost:3001/api/projects")
-      .then(res => res.json())
-      .then(data => setProjects(data));
-  }, []);
-
-  const addProject = (e: any) => {
-    e.preventDefault();
-
-    fetch("http://localhost:3001/api/projects", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form)
-    })
-      .then(res => res.json())
-      .then(data => {
-        setProjects([...projects, data]);
-        setForm({ title: "", description: "", image: "" });
-      });
-  };
-
+const App: React.FC = () => {
   return (
-    <>
+    <div className="portfolio-wrapper">
+      {/* Hero Section */}
       <section className="hero">
-        <div className="hero-tag">Creative Universe</div>
+        <div className="hero-tag">Portfolio 2026</div>
         <h1>Δημιουργούμε ιστορίες που μένουν αξέχαστες.</h1>
       </section>
 
-      <section className="input-panel">
-        <form onSubmit={addProject} className="input-group">
-          <input
-            placeholder="Τίτλος"
-            value={form.title}
-            onChange={e => setForm({ ...form, title: e.target.value })}
+      {/* About Section */}
+      <section className="about-section">
+        <div className="about-image">
+          <img 
+            src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" 
+            alt="Me" 
           />
-          <textarea
-            placeholder="Περιγραφή"
-            value={form.description}
-            onChange={e => setForm({ ...form, description: e.target.value })}
-          />
-          <input
-            placeholder="Image URL"
-            value={form.image}
-            onChange={e => setForm({ ...form, image: e.target.value })}
-          />
-          <button className="add-btn">+ Προσθήκη</button>
-        </form>
+        </div>
+        <div className="about-text">
+          <h2>Σχετικά με μένα</h2>
+          <p>
+            Γράψε εδώ το κείμενό σου. Αυτή η ενότητα θα φαίνεται δίπλα στην 
+            εικόνα στον υπολογιστή και κάτω από την εικόνα στο κινητό.
+          </p>
+        </div>
       </section>
 
-      <div>
-        {projects.map((p, i) => (
-          <div key={p.id} className="content-block">
-            <div className="content-image">
-              <img src={p.image || "https://picsum.photos/800/600"} />
-            </div>
-            <div>
-              <h2>{p.title}</h2>
-              <p>{p.description}</p>
-            </div>
+      {/* Portfolio Projects */}
+      <div className="portfolio">
+        {/* Project 01 */}
+        <div className="content-block">
+          <div className="content-image">
+            <span className="number">01</span>
+            <img 
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80" 
+              alt="Project 01" 
+            />
           </div>
-        ))}
+          <div className="content-text">
+            <div className="hero-tag">Design</div>
+            <h2>Τίτλος Έργου 01</h2>
+            <p>
+              Περιγραφή του έργου σου. Στο κινητό, αυτή η κάρτα θα στοιχηθεί 
+              αυτόματα για να είναι ευανάγνωστη.
+            </p>
+          </div>
+        </div>
+
+        {/* Project 02 */}
+        <div className="content-block">
+          <div className="content-image">
+            <span className="number">02</span>
+            <img 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" 
+              alt="Project 02" 
+            />
+          </div>
+          <div className="content-text">
+            <div className="hero-tag">Development</div>
+            <h2>Τίτλος Έργου 02</h2>
+            <p>
+              Όταν προσθέτεις νέα έργα, απλώς αντέγραψε όλο το block του project.
+            </p>
+          </div>
+        </div>
       </div>
-    </>
+
+      {/* Footer */}
+      <footer>
+        <p>&copy; 2026 Το Όνομά Σου | Professional Portfolio</p>
+      </footer>
+    </div>
   );
-}
+};
+
+export default App;
