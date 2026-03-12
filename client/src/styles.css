@@ -1,0 +1,55 @@
+:root {
+  --bg-color: #0b1d26;
+  --accent-color: #fbd334;
+  --text-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(11,29,38,0.2), #0b1d26),
+    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15%;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+}
+
+.input-panel {
+  padding: 80px 15%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input, textarea {
+  padding: 12px;
+}
+
+.add-btn {
+  background: var(--accent-color);
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.content-block {
+  display: flex;
+  gap: 50px;
+  padding: 80px 15%;
+}
